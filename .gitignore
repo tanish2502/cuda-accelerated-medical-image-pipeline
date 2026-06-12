@@ -1,0 +1,19 @@
+# Build directory
+build/
+
+# Output images
+data/output/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.user
+
+# Compiled objects
+*.o
+*.obj
+*.exe
