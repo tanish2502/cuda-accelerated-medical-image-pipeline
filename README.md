@@ -12,7 +12,7 @@ A high-performance image processing pipeline implemented in three stages:
 4. Gaussian Blur — Noise reduction
 
 ## Hardware
-- CPU Development: Apple M1
+- CPU Development: Intel Core Ultra 7 165H
 - GPU Development: NVIDIA RTX 500 Ada (CUDA 12.4)
 
 > 🚧 Work in progress — CPU baseline → Naive GPU → Optimized GPU implementations with benchmarking.
