@@ -1,0 +1,6 @@
+implementation,stage,image_width,image_height,transfer_time_ms,kernel_time_ms,total_time_ms,speedup_vs_cpu
+CPU,Gaussian,1024,1024,0,0,36.17,1.0
+CPU,Sobel,1024,1024,0,0,13.72,1.0
+CPU,HistogramEq,1024,1024,0,0,2.84,1.0
+CPU,Threshold,1024,1024,0,0,0.35,1.0
+CPU,FullPipeline,1024,1024,0,0,56.17,1.0
