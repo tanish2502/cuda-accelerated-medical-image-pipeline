@@ -28,6 +28,9 @@ private:
     bool isRunning = false;
 };
 
+//GpuTimer - only when compiling with nvcc, as it uses CUDA events
+#ifdef _CUDACC_
+#include <cuda_runtime.h>
 class GpuTimer{
 public:
     GpuTimer();
@@ -38,6 +41,7 @@ public:
     float milliseconds() const;    //elapsed time
 
 private:
-    //cudaEvent_t startEvent;
-    //cudaEvent_t stopEvent;
+    cudaEvent_t startEvent;
+    cudaEvent_t stopEvent;
 };
+#endif

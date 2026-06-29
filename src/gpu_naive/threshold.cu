@@ -1,7 +1,9 @@
 #include "../../include/gpu_naive/threshold.h"
+#include "../../src/common/timer.cu"
 #include <cuda_runtime.h>
+#include <iostream>
 
-__global__ void thresholdKernel(const uint16_t* input, uint16_t* output, int width, int height, uint16_t thresholdValue) {
+_global_ void thresholdKernel(const uint16_t* input, uint16_t* output, int width, int height, uint16_t thresholdValue) {
 
     int x = blockIdx.x * blockDim.x + threadIdx.x;
     int y = blockIdx.y * blockDim.y + threadIdx.y;
@@ -28,6 +30,8 @@ void ThresholdGpu::process(Image& img) {
         (img.height + 15) / 16
     );
 
+    GpuTimer gpuTimer;
+    gpuTimer.start();
     thresholdKernel<<<gridSize, blockSize>>>(
         img.d_pixels,
         img.d_pixels,
@@ -35,6 +39,9 @@ void ThresholdGpu::process(Image& img) {
         img.height,
         thresholdValue
     );
+    gpuTimer.stop();
+    gpuTimer.sync();
+    std::cout << "threshold (GPU): " << gpuTimer.milliseconds() << " ms\n";
 
     // Copy device → host
     cudaMemcpy(img.pixels.data(), img.d_pixels,

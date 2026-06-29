@@ -26,7 +26,7 @@ target_link_libraries(pipeline_cpu ${OpenCV_LIBS})
 #GPU Naive Executables
 add_executable( pipeline_gpu_naive
                 src/common/image_loader.cpp
-                src/gpu_naive/threshold.cu
                 src/gpu_naive/pipeline_gpu_naive.cu
+                src/gpu_naive/threshold.cu
 )
 target_link_libraries(pipeline_gpu_naive ${OpenCV_LIBS})
